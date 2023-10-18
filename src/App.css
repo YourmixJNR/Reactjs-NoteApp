@@ -13,7 +13,6 @@
 
 /* BASE STYLES */
 
-
 *{
   margin: 0;
   padding: 0;
@@ -23,7 +22,6 @@
   font-size: inherit;
   scroll-behavior: smooth;
 }
-
 
 body{
   line-height: 1.8em;
@@ -36,7 +34,6 @@ a {
 }
 
 /* APP STYLES */
-
 
 .container {
   width: 100%;
@@ -57,7 +54,6 @@ a {
   box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.05);
   position: relative;
 }
-
 
 .app-header {
   display: flex;
@@ -92,7 +88,6 @@ a {
   padding: 16px;
 }
 
-
 /* NOTES STYLES */
 
 .notes-header {
@@ -113,7 +108,6 @@ a {
   font-size: 18px;
   color: var(--color-gray);
 }
-
 
 .notes-list {
   padding: 0;
@@ -144,7 +138,6 @@ a {
   font-weight: 600;
 }
 
-
 .notes-list-item p span {
   color: var(--color-gray);
   display: inline-block;
@@ -173,12 +166,9 @@ a {
   box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2);
 }
 
-
 .floating-button > svg {
   fill: var(--color-bg);
 }
-
-
 
 /*==============================
 =>  Note Styles

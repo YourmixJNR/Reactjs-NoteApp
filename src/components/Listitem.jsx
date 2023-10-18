@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 
-const Listitem = ({note}) => {
+const ListItem = ({note}) => {
   return (
     <Link to={`/note/${note.id}`}>
         <div className='note-list-item'>
@@ -11,4 +11,4 @@ const Listitem = ({note}) => {
   )
 };
 
-export default Listitem;
+export default ListItem;

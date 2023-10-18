@@ -8,12 +8,14 @@ import './App.css';
 function App() {
   return (
     <Router>
-      <div className="app">
+      <div className="container dark">
+        <div className="app">
         <Header />
         <Routes>
           <Route path="/" element={<Notes />} />
           <Route path="/note/:id" element={<Note />} />
         </Routes>
+        </div>
       </div>
     </Router>
   );

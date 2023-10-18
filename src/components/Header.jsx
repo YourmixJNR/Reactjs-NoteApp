@@ -1,8 +1,9 @@
+import React from "react";
 
 const Header = () => {
     return (
         <div>
-            Hello World
+            <h1>Hello World</h1>
         </div>
     )
 };

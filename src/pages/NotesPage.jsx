@@ -6,8 +6,8 @@ import React from 'react'
 const Notes = () => {
   return (
     <div>
-      {notes.map((note) => (
-        <Listitem note={note} />
+      {notes.map((note, index) => (
+        <Listitem key={index} note={note} />
       ))}
     </div>
   )

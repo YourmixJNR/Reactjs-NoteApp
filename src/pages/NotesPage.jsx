@@ -5,9 +5,6 @@ import AddButton from "./AddButton";
 const Notes = () => {
   const [notes, setNotes] = useState([]);
 
-  // Import Base URL
-  const baseUrl = process.env.REACT_APP_BASE_URL;
-
   const getNotes = async () => {
     try {
       let response = await fetch(`${process.env.REACT_APP_BASE_URL}/api/tasks/`);

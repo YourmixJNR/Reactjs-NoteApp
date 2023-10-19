@@ -16,7 +16,7 @@ const Note = () => {
 
   }, [])
 
-  let getNote = async () => {
+  let getNotes = async () => {
     if(id === "new")
     return
 

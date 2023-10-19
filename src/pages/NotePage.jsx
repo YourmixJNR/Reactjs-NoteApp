@@ -1,23 +1,40 @@
 import React from 'react';
-// import notes from '../assets/data';
 import { useState, useEffect } from 'react';
 import { ReactComponent as ArrowLeft } from '../assets/arrow-left.svg';
 import { Link } from 'react-router-dom';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
 const Note = () => {
   let { id } = useParams();
 
-  let [notes, setNotes] = useState(null);
+  let navigate = useNavigate();
+
+  let [note, setNote] = useState(null)
 
   useEffect(() => {
-    getNotes()
+    getNote()
   }, [id])
 
-  let getNotes = async () => {
-    let response = await fetch(`http://localhost:5000/posts/${id}`);
-    let result = await response.json();
-    setNotes(result)
+  let getNote = async () => {
+    if (id == 'new') return
+    let response = await fetch(`http://localhost:5000/notes/${id}`)
+    let data = await response.json()
+    setNote(data)
+}
+
+  const updateNote = async () => {
+    await fetch(`http://localhost:5000/notes/${id}/`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ ...note, 'updated': new Date() })
+    })  
+  }
+
+  let handleSubmit = () => {
+    updateNote()
+    navigate('/')
   }
 
   return (
@@ -25,11 +42,11 @@ const Note = () => {
 
       <div className='note-header'>
         <Link to="/">
-          <ArrowLeft />
+          <ArrowLeft onClick={handleSubmit}/>
         </Link>
       </div>
 
-      <textarea value={notes?.body}></textarea>
+      <textarea onChange={(e) => {setNote({...note, 'body': e.target.value})}} value={note?.body}></textarea>
 
     </div>
   );

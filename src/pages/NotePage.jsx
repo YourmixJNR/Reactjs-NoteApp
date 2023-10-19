@@ -13,7 +13,7 @@ const Note = () => {
 
   useEffect(() => {
     getNote()
-  }, [id])
+  }, []);
 
   let getNote = async () => {
     if(id === "new") 

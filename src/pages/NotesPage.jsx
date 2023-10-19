@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import ListItem from "../components/Listitem";
+import AddButton from "./AddButton";
 
 import React from 'react'
 
@@ -29,7 +30,7 @@ const Notes = () => {
                 <ListItem key={index} note={note} />
             ))}
         </div>
-
+        <AddButton />
     </div>
 )
 }

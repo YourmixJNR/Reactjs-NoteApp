@@ -12,10 +12,14 @@ const Note = () => {
   let [note, setNote] = useState(null)
 
   useEffect(() => {
-    getNote()
-  }, [id]);
+    getNotes()
+
+  }, [])
 
   let getNote = async () => {
+    if(id === "new")
+    return
+
     let response = await fetch(`http://localhost:5000/notes/${id}`)
     let data = await response.json()
     setNote(data)

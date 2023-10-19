@@ -7,32 +7,23 @@ const Note = () => {
   const navigate = useNavigate();
   const [note, setNote] = useState({ title: '' });
 
-  // Import Base URL
-  const baseUrl = process.env.REACT_APP_BASE_URL;
-
   useEffect(() => {
     const getNotes = async () => {
       try {
-        let response = await fetch(`${baseUrl}/api/tasks/`);
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
+        if (id === "new") return;
+        let response = await fetch(`${process.env.REACT_APP_BASE_URL}/api/tasks/${id}`);
         let data = await response.json();
-        setNotes(data);
+        setNote(data);
       } catch (error) {
-        console.error("Error fetching tasks:", error);
-        // Handle any errors that occur during the data fetching process
+        console.error("Error fetching note:", error);
       }
     };
-  
     getNotes();
-  
-  }, [baseUrl, getNotes]);
-  
+  }, [id]);
 
   const deleNote = async () => {
     try {
-      await fetch(`${baseUrl}/api/tasks/${id}`, {
+      await fetch(`${process.env.REACT_APP_BASE_URL}/api/tasks/${id}`, {
         method: "DELETE",
         headers: {
           'Content-Type': 'application/json'
@@ -50,7 +41,7 @@ const Note = () => {
 
   const createNote = async () => {
     try {
-      await fetch(`${baseUrl}/api/tasks/`, {
+      await fetch(`${process.env.REACT_APP_BASE_URL}/api/tasks/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -64,7 +55,7 @@ const Note = () => {
 
   const updateNote = async () => {
     try {
-      await fetch(`${baseUrl}/api/tasks/${id}/`, {
+      await fetch(`${process.env.REACT_APP_BASE_URL}/api/tasks/${id}/`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'

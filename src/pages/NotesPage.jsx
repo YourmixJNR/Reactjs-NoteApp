@@ -10,7 +10,7 @@ const Notes = () => {
 
   const getNotes = async () => {
     try {
-      let response = await fetch(`${baseUrl}/api/tasks/`);
+      let response = await fetch(`${process.env.REACT_APP_BASE_URL}/api/tasks/`);
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }

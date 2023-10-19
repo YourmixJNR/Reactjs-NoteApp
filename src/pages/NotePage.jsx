@@ -44,12 +44,14 @@ const Note = () => {
         },
         body: JSON.stringify({ ...note, 'updated': new Date() })
     })
-    navigate('/')
   }
 
-  let handleSubmit = () => {
-    updateNote()
-    navigate('/')
+    let handleSubmit = () => {
+      if (id != "new" && !note.body) {
+          deleNote();
+      } else if (id != "new") {
+          updateNote();
+    }
   }
 
   return (

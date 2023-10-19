@@ -7,7 +7,6 @@ const ListItem = ({note}) => {
         return new Date(note.updated).toLocaleDateString()
     }
 
-
     let getTitle = (note) => {
         const title = note.body.split('\n')[0]
         if (title.length > 45) {
@@ -15,7 +14,6 @@ const ListItem = ({note}) => {
         }
         return title
     }
-
 
     let getContent = (note) => {
         let title = getTitle(note)

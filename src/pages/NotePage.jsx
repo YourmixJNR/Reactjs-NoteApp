@@ -19,7 +19,6 @@ const Note = () => {
         let data = await response.json();
         setNote(data);
       } catch (error) {
-        // Handle error here
         console.error("Error fetching note:", error);
       }
     };

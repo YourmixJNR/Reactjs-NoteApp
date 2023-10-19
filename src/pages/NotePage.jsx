@@ -9,21 +9,24 @@ const Note = () => {
 
   let navigate = useNavigate();
 
-  let [note, setNote] = useState(null)
+  let [note, setNote] = useState(null);
+
+  const getNotes = async () => {
+    if (id === "new") return;
+
+    try {
+      let response = await fetch(`http://localhost:5000/notes/${id}`);
+      let data = await response.json();
+      setNote(data);
+    } catch (error) {
+      // Handle error here
+      console.error("Error fetching note:", error);
+    }
+  };
 
   useEffect(() => {
-    getNotes()
-
-  }, [])
-
-  let getNotes = async () => {
-    if(id === "new")
-    return
-
-    let response = await fetch(`http://localhost:5000/notes/${id}`)
-    let data = await response.json()
-    setNote(data)
-  }
+    getNotes();
+  }, [id]);
 
   const deleNote = async () => {
     await fetch(`http://localhost:5000/notes/${id}`, {

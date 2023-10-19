@@ -60,9 +60,9 @@ const Note = () => {
   }
 
     let handleSubmit = () => {
-      if (id != "new" && !note.body) {
+      if (id !== "new" && !note.body) {
           deleNote();
-      } else if (id != "new") {
+      } else if (id !== "new") {
           updateNote();
     } else if (id === "new" && note.body !== null) {
       createNote();

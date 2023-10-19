@@ -16,11 +16,25 @@ const Note = () => {
   }, [id])
 
   let getNote = async () => {
-    if (id == 'new') return
     let response = await fetch(`http://localhost:5000/notes/${id}`)
     let data = await response.json()
     setNote(data)
-}
+  }
+
+  const deleNote = async () => {
+    await fetch(`http://localhost:5000/notes/${id}`, {
+      method: "DELETE",
+      headers: {
+        'Content-Type': 'application.json'
+      },
+      body: JSON.stringify(note)
+    })
+  }
+
+  const handleDelete = () => {
+    deleNote()
+    navigate('/')
+  }
 
   const updateNote = async () => {
     await fetch(`http://localhost:5000/notes/${id}/`, {
@@ -29,7 +43,8 @@ const Note = () => {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({ ...note, 'updated': new Date() })
-    })  
+    })
+    navigate('/')
   }
 
   let handleSubmit = () => {
@@ -41,9 +56,12 @@ const Note = () => {
     <div className='note'>
 
       <div className='note-header'>
+        <h3>
         <Link to="/">
           <ArrowLeft onClick={handleSubmit}/>
         </Link>
+        </h3>
+        <button onClick={handleDelete}>Delete</button>
       </div>
 
       <textarea onChange={(e) => {setNote({...note, 'body': e.target.value})}} value={note?.body}></textarea>

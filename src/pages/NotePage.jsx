@@ -12,7 +12,6 @@ const Note = () => {
   let [note, setNote] = useState(null);
 
   const getNotes = async () => {
-    if (id === "new") return;
 
     try {
       let response = await fetch(`http://localhost:5000/notes/${id}`);
@@ -26,7 +25,7 @@ const Note = () => {
 
   useEffect(() => {
     getNotes();
-  }, [id]);
+  }, []);
 
   const deleNote = async () => {
     await fetch(`http://localhost:5000/notes/${id}`, {

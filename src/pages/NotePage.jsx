@@ -13,16 +13,22 @@ const Note = () => {
   useEffect(() => {
     const getNotes = async () => {
       try {
-        if (id === "new") return;
-        let response = await fetch(`${baseUrl}/api/tasks/${id}`);
+        let response = await fetch(`${baseUrl}/api/tasks/`);
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
         let data = await response.json();
-        setNote(data);
+        setNotes(data);
       } catch (error) {
-        console.error("Error fetching note:", error);
+        console.error("Error fetching tasks:", error);
+        // Handle any errors that occur during the data fetching process
       }
     };
+  
     getNotes();
-  }, [id]);
+  
+  }, [baseUrl, getNotes]);
+  
 
   const deleNote = async () => {
     try {

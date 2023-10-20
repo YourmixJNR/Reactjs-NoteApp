@@ -1,6 +1,6 @@
 # ReactJS NoteApp
 
-This is a simple Note App built using React.js and utilizes a JSON server for data management.
+This is a simple Note App built using React.js and utilizes an API for data management.
 
 ## Features
 
@@ -11,7 +11,7 @@ This is a simple Note App built using React.js and utilizes a JSON server for da
 ## Technologies Used
 
 - React.js
-- JSON Server
+- Custom API from a [Friend](https://github.com/Oluwaseun241)
 
 ## Installation
 

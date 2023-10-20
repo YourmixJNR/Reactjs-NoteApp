@@ -1,11 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import ListItem from "../components/Listitem";
 import AddButton from "./AddButton";
 
 const Notes = () => {
   const [notes, setNotes] = useState([]);
 
-  const getNotes = async () => {
+  const getNotes = useCallback(async () => {
     try {
       let response = await fetch(`${process.env.REACT_APP_BASE_URL}/api/tasks/`);
       if (!response.ok) {
@@ -17,11 +17,11 @@ const Notes = () => {
       console.error("Error fetching tasks:", error);
       // Handle any errors that occur during the data fetching process
     }
-  };
+  }, []);
 
   useEffect(() => {
     getNotes();
-  }, []);
+  }, [getNotes]);
 
   return (
     <div className="notes">

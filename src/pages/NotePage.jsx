@@ -60,7 +60,7 @@ const Note = () => {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(note)
+        body: JSON.stringify({...note, note})
       });
     } catch (error) {
       console.error("Error updating note:", error);

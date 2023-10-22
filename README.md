@@ -11,7 +11,7 @@ This is a simple Note App built using React.js and utilizes an API for data mana
 ## Technologies Used
 
 - React.js
-- Custom API from a [Friend](https://github.com/Oluwaseun241)
+- Custom API from a [Oluwaseun](https://github.com/Oluwaseun241)
 
 ## Installation
 
